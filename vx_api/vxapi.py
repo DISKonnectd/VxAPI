@@ -11,7 +11,7 @@ except ImportError as exc:
 if platform == 'win32':
     init()
 
-from colors import Color
+from vx_api.colors import Color
 
 if sys.version_info < (3, 4, 0):
     print(Color.error('\nYou need python 3.4 or later to run this script. Possibly you should start the command from calling \'python3\' instead of \'python\'\n'))
@@ -31,67 +31,67 @@ except ImportError as exc:
 
 import argparse
 
-from api_classes.api_submit_url import ApiSubmitUrl
-from api_classes.api_submit_file import ApiSubmitFile
-from api_classes.api_quota import ApiQuota
-from api_classes.api_state import ApiState
-from api_classes.api_scan import ApiScan
-from api_classes.api_summary import ApiSummary
-from api_classes.api_search import ApiSearch
-from api_classes.api_relationships import ApiRelationships
-from api_classes.api_feed import ApiFeed
-from api_classes.api_system_stats import ApiSystemStats
-from api_classes.api_system_state import ApiSystemState
-from api_classes.api_system_backend import ApiSystemBackend
-from api_classes.api_system_queue_size import ApiSystemQueueSize
-from api_classes.api_system_in_progress import ApiSystemInProgress
-from api_classes.api_system_heartbeat import ApiSystemHeartbeat
-from api_classes.api_result import ApiResult
-from api_classes.api_reanalyze import ApiReanalyze
-from api_classes.api_dropped_file_submit import ApiDroppedFileSubmit
-from api_classes.api_sample_dropped_files import ApiSampleDroppedFiles
-from api_classes.api_sample_screenshots import ApiSampleScreenshots
-from api_classes.api_api_key_data import ApiApiKeyData
-from api_classes.api_api_limits import ApiApiLimits
+from vx_api.api_classes.api_submit_url import ApiSubmitUrl
+from vx_api.api_classes.api_submit_file import ApiSubmitFile
+from vx_api.api_classes.api_quota import ApiQuota
+from vx_api.api_classes.api_state import ApiState
+from vx_api.api_classes.api_scan import ApiScan
+from vx_api.api_classes.api_summary import ApiSummary
+from vx_api.api_classes.api_search import ApiSearch
+from vx_api.api_classes.api_relationships import ApiRelationships
+from vx_api.api_classes.api_feed import ApiFeed
+from vx_api.api_classes.api_system_stats import ApiSystemStats
+from vx_api.api_classes.api_system_state import ApiSystemState
+from vx_api.api_classes.api_system_backend import ApiSystemBackend
+from vx_api.api_classes.api_system_queue_size import ApiSystemQueueSize
+from vx_api.api_classes.api_system_in_progress import ApiSystemInProgress
+from vx_api.api_classes.api_system_heartbeat import ApiSystemHeartbeat
+from vx_api.api_classes.api_result import ApiResult
+from vx_api.api_classes.api_reanalyze import ApiReanalyze
+from vx_api.api_classes.api_dropped_file_submit import ApiDroppedFileSubmit
+from vx_api.api_classes.api_sample_dropped_files import ApiSampleDroppedFiles
+from vx_api.api_classes.api_sample_screenshots import ApiSampleScreenshots
+from vx_api.api_classes.api_api_key_data import ApiApiKeyData
+from vx_api.api_classes.api_api_limits import ApiApiLimits
 
-from cli_classes.cli_quota import CliQuota
-from cli_classes.cli_state import CliState
-from cli_classes.cli_scan import CliScan
-from cli_classes.cli_summary import CliSummary
-from cli_classes.cli_search import CliSearch
-from cli_classes.cli_relationships import CliRelationships
-from cli_classes.cli_feed import CliFeed
-from cli_classes.cli_system_stats import CliSystemStats
-from cli_classes.cli_system_state import CliSystemState
-from cli_classes.cli_system_heartbeat import CliSystemHeartbeat
-from cli_classes.cli_system_backend import CliSystemBackend
-from cli_classes.cli_system_in_progress import CliSystemInProgress
-from cli_classes.cli_system_queue_size import CliSystemQueueSize
-from cli_classes.cli_result import CliResult
-from cli_classes.cli_submit_file import CliSubmitFile
-from cli_classes.cli_submit_url_file import CliSubmitUrlFile
-from cli_classes.cli_submit_url import CliSubmitUrl
-from cli_classes.cli_reanalyze import CliReanalyze
-from cli_classes.cli_dropped_file_submit import CliDroppedFileSubmit
-from cli_classes.cli_sample_dropped_files import CliSampleDroppedFiles
-from cli_classes.cli_sample_screenshots import CliSampleScreenshots
-from cli_classes.cli_api_limits import CliApiLimits
+from vx_api.cli_classes.cli_quota import CliQuota
+from vx_api.cli_classes.cli_state import CliState
+from vx_api.cli_classes.cli_scan import CliScan
+from vx_api.cli_classes.cli_summary import CliSummary
+from vx_api.cli_classes.cli_search import CliSearch
+from vx_api.cli_classes.cli_relationships import CliRelationships
+from vx_api.cli_classes.cli_feed import CliFeed
+from vx_api.cli_classes.cli_system_stats import CliSystemStats
+from vx_api.cli_classes.cli_system_state import CliSystemState
+from vx_api.cli_classes.cli_system_heartbeat import CliSystemHeartbeat
+from vx_api.cli_classes.cli_system_backend import CliSystemBackend
+from vx_api.cli_classes.cli_system_in_progress import CliSystemInProgress
+from vx_api.cli_classes.cli_system_queue_size import CliSystemQueueSize
+from vx_api.cli_classes.cli_result import CliResult
+from vx_api.cli_classes.cli_submit_file import CliSubmitFile
+from vx_api.cli_classes.cli_submit_url_file import CliSubmitUrlFile
+from vx_api.cli_classes.cli_submit_url import CliSubmitUrl
+from vx_api.cli_classes.cli_reanalyze import CliReanalyze
+from vx_api.cli_classes.cli_dropped_file_submit import CliDroppedFileSubmit
+from vx_api.cli_classes.cli_sample_dropped_files import CliSampleDroppedFiles
+from vx_api.cli_classes.cli_sample_screenshots import CliSampleScreenshots
+from vx_api.cli_classes.cli_api_limits import CliApiLimits
 
-from exceptions import MissingConfigurationError
-from exceptions import RetrievingApiKeyDataError
-from exceptions import ReachedApiLimitError
+from vx_api.exceptions import MissingConfigurationError
+from vx_api.exceptions import RetrievingApiKeyDataError
+from vx_api.exceptions import ReachedApiLimitError
 
 import datetime
 import os.path
 import json
 
 from collections import OrderedDict
-from cli_classes.cli_argument_builder import CliArgumentBuilder
+from vx_api.cli_classes.cli_argument_builder import CliArgumentBuilder
 
 def main():
     try:
         if os.path.exists('config.py'):
-            from config import get_config
+            from vx_api.config import get_config
             config = get_config()
         else:
             raise MissingConfigurationError('Configuration is missing. Before running CLI, please copy the file \'config_tpl.pl\' from current dir, rename it to \'config.pl\', and fill')
